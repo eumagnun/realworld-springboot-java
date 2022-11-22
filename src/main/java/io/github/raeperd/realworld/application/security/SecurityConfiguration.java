@@ -59,11 +59,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
         return new BCryptPasswordEncoder();
     }
 
+    //On the realworld DON'T ALLOW ALL ORIGINS
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("GET", "HEAD", "POST", "DELETE", "PUT", "OPTIONS")
-                .allowedOrigins(properties.getAllowedOrigins().toArray(new String[0]))
+                .allowedOrigins("*")
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
